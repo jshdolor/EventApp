@@ -1,0 +1,5 @@
+body{
+    padding: $padding_body;
+    background: $color_theme1;
+    background: linear-gradient(90deg, $color_theme1 0%, $color_theme2 50%, $color_theme3 100%);
+}

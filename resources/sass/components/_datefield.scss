@@ -1,0 +1,11 @@
+.dropdown {
+    &.open {
+        .dropdown-menu {
+            display: block;
+        }
+
+        .uiv-datepicker {
+            display: inline !important;
+        }
+    }
+}

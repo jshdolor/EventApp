@@ -1,0 +1,19 @@
+form {
+    &.disabled {
+        input,
+        select,
+        button
+        {
+            pointer-events: none;
+        }
+    }
+
+    label {
+        margin-right: 10px;
+
+        input[type=checkbox] {
+            margin-right: 5px;
+        }
+    }
+    
+}
