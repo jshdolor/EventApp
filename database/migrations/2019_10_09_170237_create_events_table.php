@@ -16,8 +16,8 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('event_title');
-            $table->timestamp('start_date')->nullable();
-            $table->timestamp('end_date')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             //S|M|T|W|T|F|S
             //0|1|0|1|0|1|0
             $table->string('recurrence', 13)->default("0|0|0|0|0|0|0");

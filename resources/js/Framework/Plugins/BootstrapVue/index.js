@@ -3,5 +3,6 @@ export {
     DatePicker,
     Btn,
     Navbar,
-    NavbarNav ,
+    NavbarNav,
+    Notification
 } from 'uiv/dist/uiv.esm';

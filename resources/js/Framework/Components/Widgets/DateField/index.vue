@@ -1,8 +1,14 @@
 <template>
-    <Dropdown class="form-group">
+    <Dropdown class="form-group" v-model="isDropdownOpen">
         <label v-html="label"></label>
         <div class="input-group">
-            <input class="form-control" type="text" v-model="date" />
+            <input
+                class="form-control"
+                type="text"
+                :value="date"
+                readonly
+                @focus="isDropdownOpen = true"
+            />
             <div class="input-group-btn">
                 <Button class="dropdown-toggle">
                     <i class="glyphicon glyphicon-calendar"></i>
@@ -11,7 +17,7 @@
         </div>
         <template slot="dropdown">
             <li>
-                <DatePicker v-show="showPicker" v-model="date" />
+                <DatePicker :todayBtn="false" v-on:input="updateDate" :clearBtn="false" :value="date" />
             </li>
         </template>
     </Dropdown>
@@ -29,12 +35,16 @@ export default {
     },
     data() {
         return {
-            date: null,
-            showPicker: false
+            isDropdownOpen: false
         };
     },
-    props: {
-      label: String
-    }
+
+    methods: {
+        updateDate(date) {
+            this.$emit('datefieldChange', date);
+        }
+    },
+
+    props: ['label', 'date']
 };
 </script>

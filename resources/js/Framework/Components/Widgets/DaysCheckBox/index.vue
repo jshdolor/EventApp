@@ -1,28 +1,37 @@
 <template>
     <div class="form-inline">
-        <label>
-            <input type="checkbox"> Mon
-        </label>
-        <label>
-            <input type="checkbox"> Tue
-        </label>
-        <label>
-            <input type="checkbox"> Wed
-        </label>
-        <label>
-            <input type="checkbox"> Thu
-        </label>
-        <label>
-            <input type="checkbox"> Sat
-        </label>
-        <label>
-            <input type="checkbox"> Sun
+        <label v-for="(dayName, key) in daysName" :key="key">
+            <input :checked="days[key]" type="checkbox" :name="key" @change="toggleDay"/>
+            {{ dayName | shortName}}
         </label>
     </div>
 </template>
 
 <script>
+import { daysName } from "~/Framework/Helpers/Date";
+
 export default {
-    name: 'DaysCheckBox'
-}
+    name: "DaysCheckBox",
+    data() {
+        return {
+            daysName
+        };
+    },
+
+    methods: {
+        toggleDay(e) {
+            let day = e.target.name;
+            let value = e.target.checked;
+            this.$emit('toggleDay',{day, value});
+        }
+    },
+
+    props: ['days'],
+
+    filters: {
+        shortName: function(value) {
+            return value.substr(0, 3);
+        }
+    }
+};
 </script>

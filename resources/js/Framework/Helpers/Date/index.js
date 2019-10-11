@@ -66,5 +66,6 @@ export {
     getMonthName,
     getDayName,
     daysInMonth,
-    createCalendarList
+    createCalendarList,
+    daysName
 };

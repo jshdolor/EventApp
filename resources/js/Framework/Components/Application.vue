@@ -21,6 +21,7 @@
 <script>
 import EventForm from "~/Framework/Components/Forms/Event";
 import EventDayList from "~/Framework/Components/Widgets/EventDayList";
+import EventService from "~/Application/Services/Events";
 
 export default {
     name: "EventApp",
@@ -32,6 +33,25 @@ export default {
 
     data() {
         return {};
+    },
+
+    mounted() {
+        EventService.getLatest().then(
+            (data) => {
+
+                if(data.length === 0) {
+                    return ;
+                }
+    
+                this.$store.dispatch("event/setEventTitle", data.eventTitle);
+                this.$store.dispatch("event/setEndDate", data.endDate);
+                this.$store.dispatch("event/setStartDate", data.startDate);
+                this.$store.dispatch("event/setDays", data.days);
+
+            }
+        ).finally(() => {
+            this.$root.$emit('eventUpdate', true);
+        });
     }
 };
 </script>
