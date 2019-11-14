@@ -3,7 +3,7 @@
         <h4 v-html="currentDate"></h4>
         <table class="table">
             <tr :class="hasEvent? 'bg-success text-white': '' " v-for="{date, day, event, hasEvent} in dateDays" :key="date">
-                <td v-html="`${date} ${day} ${event}` "></td>
+                <td v-html="`${date} ${day}` "></td><td v-html="event"></td>
             </tr>
         </table>
     </div>
@@ -65,7 +65,7 @@ export default {
                 dateDays.push({
                     date: i,
                     day: getDayName(date.getDay()),
-                    event: this.eventTitle,
+                    event: hasEvent? this.eventTitle: '',
                     hasEvent
                 });
             }
