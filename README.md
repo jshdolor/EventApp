@@ -1,5 +1,6 @@
 # EventApp
 
-## composer install
-## npm install
-## npm run prod
+### composer install
+### php artisan migrate
+### npm install
+### npm run prod
